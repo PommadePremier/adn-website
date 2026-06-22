@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<!-- saved from url=(0058)file:///C:/Users/Sulta/Downloads/ADN_responsive_v8_15.html -->
+<html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADN — Concept v4</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=BBH+Bartle&family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #f5f0e6; }
+  :root { --cell: 28px; --rose: rgba(238,127,163,0.45); --fond: #f5f0e6; }
+
+  .grid-layer {
+    width: 100%;
+    background-image:
+      linear-gradient(to right, var(--rose) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--rose) 1px, transparent 1px);
+    background-size: var(--cell) var(--cell);
+    background-position: 0 0;
+  }
+
+  .header-inner {
+    width: min(1904px, 100%);
+    margin: 0 auto;
+    height: calc(var(--cell) * 4);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo-block { display: inline-flex; flex-direction: column; margin-left: var(--cell); }
+
+  .logo-line {
+    display: inline-flex;
+    align-items: center;
+    height: calc(var(--cell) + 1px);
+    width: calc(var(--cell) * 8 + 1px);
+    padding-left: 10px;
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 600;
+    font-size: 14pt;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: #1a1a1a;
+    white-space: nowrap;
+    background: var(--fond);
+    border: 1px solid var(--rose);
+  }
+  .logo-line:first-child { height: var(--cell); border-bottom: none; }
+  .logo-a, .logo-d, .logo-n { color: #bc1822; }
+
+  .nav-block {
+    margin-right: calc(var(--cell) * 2 - 1px);
+    height: calc(var(--cell) * 2 + 1px);
+    width: calc(var(--cell) * 12 + 1px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--fond);
+    border: 1px solid var(--rose);
+    padding: 0 calc(var(--cell));
+  }
+
+  .nav-btn {
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 600;
+    font-size: 18pt;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: #bc1822;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  .hero {
+    width: 100%;
+    height: 80vh;
+    background: var(--fond);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .phrase {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    padding: 0 48px;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    pointer-events: none;
+  }
+  .phrase.visible { opacity: 1; }
+
+  .phrase-roboto {
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 300;
+    font-size: clamp(24pt, 2vw, 36pt);
+    color: #1a1a1a;
+    line-height: 1.4;
+  }
+  .phrase-roboto strong { font-weight: 600; }
+
+  .phrase-bartle {
+    font-family: 'BBH Bartle', sans-serif;
+    font-size: clamp(40pt, 3.5vw, 60pt);
+    color: #1a1a1a;
+    line-height: 1.5;
+  }
+  .phrase-bartle span { display: block; }
+
+  .section-outer {
+    width: 100%;
+    background: var(--fond);
+  }
+
+  .concept-inner {
+    position: relative;
+    width: calc(var(--cell) * 40 + 1px);
+    height: calc(var(--cell) * 9 + 1px);
+    margin: 0 auto;
+    background-image:
+      linear-gradient(to right, var(--rose) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--rose) 1px, transparent 1px);
+    background-size: var(--cell) var(--cell);
+    background-position: 0 0;
+    border: 1px solid var(--rose);
+  }
+
+  .concept-label {
+    position: absolute;
+    top: 0;
+    left: var(--cell);
+    width: calc(var(--cell) * 5 + 1px);
+    height: calc(var(--cell) * 2 + 1px);
+    background: var(--fond);
+    border: 1px solid var(--rose);
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 100;
+    font-size: 14pt;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #1a1a1a;
+  }
+
+  .concept-text {
+    position: absolute;
+    top: calc(var(--cell) * 2);
+    right: calc(var(--cell) - 2px);
+    width: calc(var(--cell) * 27 + 1px);
+    height: calc(var(--cell) * 5 + 1px);
+    background: var(--fond);
+    border: 1px solid var(--rose);
+    display: flex;
+    align-items: center;
+    padding-left: var(--cell);
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 200;
+    font-size: 18pt;
+    line-height: 21.6pt;
+    color: #1a1a1a;
+  }
+
+  .atelier-inner {
+    position: relative;
+    width: calc(var(--cell) * 40 + 1px);
+    height: calc(var(--cell) * 17 + 1px);
+    margin: 0 auto;
+    background-image:
+      linear-gradient(to right, var(--rose) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--rose) 1px, transparent 1px);
+    background-size: var(--cell) var(--cell);
+    background-position: 0 0;
+    border: 1px solid var(--rose);
+  }
+
+  .atelier-label {
+    position: absolute;
+    top: 0;
+    left: var(--cell);
+    width: calc(var(--cell) * 5 + 1px);
+    height: calc(var(--cell) * 2 + 1px);
+    background: var(--fond);
+    border: 1px solid var(--rose);
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 100;
+    font-size: 14pt;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #1a1a1a;
+  }
+
+  .atelier-text {
+    position: absolute;
+    top: calc(var(--cell) * 2);
+    right: calc(var(--cell) - 2px);
+    width: calc(var(--cell) * 27 + 1px);
+    height: calc(var(--cell) * 14 + 1px);
+    background: var(--fond);
+    border: 1px solid var(--rose);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: var(--cell);
+    padding-right: var(--cell);
+  }
+
+  .atelier-title {
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 600;
+    font-size: 40pt;
+    line-height: 48pt;
+    color: #1a1a1a;
+    margin-bottom: calc(var(--cell) * 1);
+  }
+
+  .atelier-body {
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 200;
+    font-size: 18pt;
+    line-height: 21.6pt;
+    color: #1a1a1a;
+  }
+
+  .piliers-inner {
+    position: relative;
+    width: calc(var(--cell) * 40 + 1px);
+    height: calc(var(--cell) * 22 + 1px);
+    margin: 0 auto;
+    background-image:
+      linear-gradient(to right, var(--rose) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--rose) 1px, transparent 1px);
+    background-size: var(--cell) var(--cell);
+    background-position: 0 0;
+    border: 1px solid var(--rose);
+  }
+
+  .piliers-label {
+    position: absolute;
+    top: 0;
+    left: var(--cell);
+    width: calc(var(--cell) * 10 + 1px);
+    height: calc(var(--cell) * 2 + 1px);
+    background: var(--fond);
+    border: 1px solid var(--rose);
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 100;
+    font-size: 14pt;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #1a1a1a;
+  }
+
+  .piliers-grid {
+    position: absolute;
+    top: calc(var(--cell) * 2);
+    right: calc(var(--cell) - 2px);
+    width: calc(var(--cell) * 27 + 1px);
+    height: calc(var(--cell) * 18 + 1px);
+    background: var(--fond);
+    display: grid;
+    grid-template-columns: repeat(2, calc(var(--cell) * 9)) calc(var(--cell) * 9 + 1px);
+    grid-template-rows: calc(var(--cell) * 9) calc(var(--cell) * 9 + 1px);
+  }
+
+  .pilier {
+    box-sizing: border-box;
+    padding: calc(var(--cell));
+    border-top: 1px solid var(--rose);
+    border-left: 1px solid var(--rose);
+    border-bottom: none;
+    border-right: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .pilier:nth-child(3n) {
+    border-right: 1px solid var(--rose);
+  }
+
+  .pilier:nth-child(1),
+  .pilier:nth-child(2),
+  .pilier:nth-child(3) {
+    border-bottom: none;
+  }
+
+  .pilier:nth-child(4),
+  .pilier:nth-child(5),
+  .pilier:nth-child(6) {
+    border-bottom: 1px solid var(--rose);
+  }
+
+  .pilier-picto {
+    margin-bottom: 8px;
+  }
+
+  .pilier-titre {
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 600;
+    font-size: 18pt;
+    line-height: 21.6pt;
+    color: #1a1a1a;
+    text-transform: uppercase;
+  }
+
+  .pilier-texte {
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 200;
+    font-size: 18pt;
+    line-height: 21.6pt;
+    color: #1a1a1a;
+  }
+
+  .methode-inner {
+    position: relative;
+    width: calc(var(--cell) * 40 + 1px);
+    height: calc(var(--cell) * 17 + 1px);
+    margin: 0 auto;
+    background-image:
+      linear-gradient(to right, var(--rose) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--rose) 1px, transparent 1px);
+    background-size: var(--cell) var(--cell);
+    background-position: 0 0;
+    border: 1px solid var(--rose);
+  }
+
+  .methode-label {
+    position: absolute;
+    top: 0;
+    left: var(--cell);
+    width: calc(var(--cell) * 5 + 1px);
+    height: calc(var(--cell) * 2 + 1px);
+    background: var(--fond);
+    border: 1px solid var(--rose);
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 100;
+    font-size: 14pt;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #1a1a1a;
+  }
+
+  .methode-text {
+    position: absolute;
+    top: calc(var(--cell) * 2);
+    right: calc(var(--cell) - 2px);
+    width: calc(var(--cell) * 27 + 1px);
+    height: calc(var(--cell) * 14 + 1px);
+    background: var(--fond);
+    border: 1px solid var(--rose);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: var(--cell);
+    padding-right: var(--cell);
+  }
+
+  .methode-title {
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 600;
+    font-size: 40pt;
+    line-height: 48pt;
+    color: #1a1a1a;
+    margin-bottom: calc(var(--cell) * 1);
+  }
+
+  .methode-body {
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 200;
+    font-size: 18pt;
+    line-height: 21.6pt;
+    color: #1a1a1a;
+  }
+
+  .contact-inner {
+    position: relative;
+    width: calc(var(--cell) * 40 + 1px);
+    height: calc(var(--cell) * 18 + 1px);
+    margin: 0 auto;
+    background-image:
+      linear-gradient(to right, var(--rose) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--rose) 1px, transparent 1px);
+    background-size: var(--cell) var(--cell);
+    background-position: 0 0;
+    border: 1px solid var(--rose);
+  }
+
+  .contact-label {
+    position: absolute;
+    top: 0;
+    left: var(--cell);
+    width: calc(var(--cell) * 5 + 1px);
+    height: calc(var(--cell) * 2 + 1px);
+    background: var(--fond);
+    border: 1px solid var(--rose);
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 100;
+    font-size: 14pt;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #1a1a1a;
+  }
+
+  /* Bloc titre BBH Bartle — 1 cell gauche, 3 cell haut, 20x7 cell */
+  .contact-titre {
+    position: absolute;
+    top: calc(var(--cell) * 3);
+    left: var(--cell);
+    width: calc(var(--cell) * 20 + 1px);
+    height: calc(var(--cell) * 7 + 1px);
+    background: var(--fond);
+    border: 1px solid var(--rose);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: var(--cell);
+    font-family: 'BBH Bartle', sans-serif;
+    font-size: 27pt;
+    line-height: 50pt;
+    color: #1a1a1a;
+  }
+
+  .contact-titre span {
+    display: block;
+  }
+
+  /* Bloc sous-titre — 1 cell gauche, 1 cell sous titre, 20x2 cell */
+  .contact-soustitre {
+    position: absolute;
+    top: calc(var(--cell) * 11);
+    left: var(--cell);
+    width: calc(var(--cell) * 20 + 1px);
+    height: calc(var(--cell) * 2 + 1px);
+    background: var(--fond);
+    border: 1px solid var(--rose);
+    display: flex;
+    align-items: center;
+    padding-left: var(--cell);
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 200;
+    font-style: italic;
+    font-size: 18pt;
+    color: #1a1a1a;
+  }
+
+  /* Bloc formulaire — 1 cell droite, 3 cell haut, 17x14 cell */
+  .contact-form {
+    position: absolute;
+    top: calc(var(--cell) * 3);
+    right: calc(var(--cell) - 2px);
+    width: calc(var(--cell) * 17 + 1px);
+    height: calc(var(--cell) * 14 + 1px);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Champs — hauteur 2 cell, bordure partagée comme logo */
+  .form-field {
+    background: var(--fond);
+    border-top: 1px solid var(--rose);
+    border-left: 1px solid var(--rose);
+    border-right: 1px solid var(--rose);
+    border-bottom: none;
+    height: calc(var(--cell) * 2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 10px;
+  }
+
+  .form-field.message {
+    height: calc(var(--cell) * 6);
+    justify-content: flex-start;
+    padding-top: 8px;
+  }
+
+  .form-field label {
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 100;
+    font-size: 10pt;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(0,0,0,0.4);
+  }
+
+  .form-field input,
+  .form-field textarea {
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 100;
+    font-size: 10pt;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    resize: none;
+    padding: 0;
+  }
+
+  .form-field textarea {
+    height: calc(var(--cell) * 4);
+  }
+
+  .form-submit {
+    height: calc(var(--cell) * 2 + 1px);
+    background: #bc1822;
+    border: 1px solid #bc1822;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--cell);
+    cursor: pointer;
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 500;
+    font-size: 14pt;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #f5f0e6;
+  }
+
+  .footer-layer {
+    width: 100%;
+    background-image:
+      linear-gradient(to right, var(--rose) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--rose) 1px, transparent 1px);
+    background-size: var(--cell) var(--cell);
+    background-position: 0 0;
+  }
+
+  .footer-inner {
+    width: min(1904px, 100%);
+    margin: 0 auto;
+    height: calc(var(--cell) * 4);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-copyright {
+    margin-right: calc(var(--cell) * 2 - 1px);
+    height: calc(var(--cell) * 2 + 1px);
+    display: flex;
+    align-items: center;
+    padding: 0 var(--cell);
+    background: var(--fond);
+    border: 1px solid var(--rose);
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 100;
+    font-size: 14pt;
+    letter-spacing: 0.06em;
+    color: #1a1a1a;
+    white-space: nowrap;
+  }
+
+@media (max-width: 768px) {
+  :root { --cell: 28px; }
+
+  /* HEADER */
+  .header-inner {
+    width: 100%;
+    padding: 0;
+  }
+
+  .logo-block {
+    margin-left: var(--cell);
+  }
+
+  .nav-block {
+    margin-right: var(--cell);
+    width: auto;
+    padding: 0 calc(var(--cell) * 0.5);
+    gap: 0;
+  }
+
+  .nav-btn:first-child {
+    display: none;
+  }
+
+  /* HERO */
+  .hero {
+    height: 80vh;
+  }
+
+  .phrase-roboto {
+    font-size: clamp(16pt, 5vw, 24pt);
+    padding: 0 calc(var(--cell));
+  }
+
+  .phrase-bartle {
+    font-size: clamp(18pt, 5vw, 26pt);
+  }
+
+  /* SECTIONS GENERALES */
+  .section-outer {
+    width: 100%;
+  }
+
+  /* CONCEPT */
+  .concept-inner {
+    width: 100%;
+    height: calc(var(--cell) * 11 + 1px);
+    margin: 0;
+    border-left: none;
+    border-right: none;
+  }
+
+  .concept-text {
+    top: calc(var(--cell) * 3);
+    left: var(--cell);
+    right: auto;
+    width: calc(var(--cell) * 12 + 1px);
+    height: calc(var(--cell) * 7 + 1px);
+    font-size: 14pt;
+    line-height: 21.6pt;
+  }
+
+  /* ATELIER */
+  .atelier-inner {
+    width: 100%;
+    height: calc(var(--cell) * 23 + 1px);
+    margin: 0;
+    border-left: none;
+    border-right: none;
+  }
+
+  .atelier-label {
+    position: absolute;
+    top: 0;
+    left: var(--cell);
+    width: calc(var(--cell) * 5 + 1px);
+    height: calc(var(--cell) * 2 + 1px);
+    margin-left: 0;
+  }
+
+  .atelier-text {
+    position: absolute;
+    top: calc(var(--cell) * 3);
+    left: var(--cell);
+    right: auto;
+    width: calc(var(--cell) * 12 + 1px);
+    height: calc(var(--cell) * 19 + 1px);
+    margin: 0;
+    padding: var(--cell);
+  }
+
+  .atelier-title {
+    font-size: 28pt;
+    line-height: 34pt;
+    margin-bottom: calc(var(--cell) * 0.5);
+  }
+
+  .atelier-body {
+    font-size: 14pt;
+    line-height: 21.6pt;
+  }
+
+  /* PILIERS */
+  .piliers-inner {
+    width: 100%;
+    height: calc(var(--cell) * 52 + 1px);
+    margin: 0;
+    border-left: none;
+    border-right: none;
+  }
+
+  .piliers-label {
+    position: absolute;
+    top: 0;
+    left: var(--cell);
+    width: calc(var(--cell) * 10 + 1px);
+    height: calc(var(--cell) * 2 + 1px);
+    margin-left: 0;
+  }
+
+  .piliers-grid {
+    position: absolute;
+    top: calc(var(--cell) * 3);
+    left: var(--cell);
+    right: auto;
+    width: calc(var(--cell) * 12 + 1px);
+    height: calc(var(--cell) * 48 + 1px);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: unset;
+    grid-template-rows: unset;
+  }
+
+  .pilier {
+    flex: 0 0 calc(var(--cell) * 8);
+    height: calc(var(--cell) * 8);
+    border-top: 1px solid var(--rose) !important;
+    border-left: 1px solid var(--rose) !important;
+    border-right: 1px solid var(--rose) !important;
+    border-bottom: none !important;
+  }
+
+  .pilier:last-child {
+    border-bottom: 1px solid var(--rose) !important;
+  }
+
+  /* METHODE */
+  .methode-inner {
+    width: 100%;
+    height: calc(var(--cell) * 25 + 1px);
+    margin: 0;
+    border-left: none;
+    border-right: none;
+  }
+
+  .methode-label {
+    position: absolute;
+    top: 0;
+    left: var(--cell);
+    width: calc(var(--cell) * 5 + 1px);
+    height: calc(var(--cell) * 2 + 1px);
+    margin-left: 0;
+  }
+
+  .methode-text {
+    position: absolute;
+    top: calc(var(--cell) * 3);
+    left: var(--cell);
+    right: auto;
+    width: calc(var(--cell) * 12 + 1px);
+    height: calc(var(--cell) * 21 + 1px);
+    margin: 0;
+    padding: var(--cell);
+  }
+
+  .methode-title {
+    font-size: 28pt;
+    line-height: 34pt;
+    margin-bottom: calc(var(--cell) * 0.5);
+  }
+
+  .methode-body {
+    font-size: 14pt;
+    line-height: 21.6pt;
+  }
+
+  /* CONTACT */
+  .contact-inner {
+    width: 100%;
+    height: calc(var(--cell) * 24 + 1px);
+    margin: 0;
+    border-left: none;
+    border-right: none;
+  }
+
+  .contact-label {
+    position: absolute;
+    top: 0;
+    left: var(--cell);
+    width: calc(var(--cell) * 5 + 1px);
+    height: calc(var(--cell) * 2 + 1px);
+    margin-left: 0;
+  }
+
+  .contact-titre {
+    position: absolute;
+    top: calc(var(--cell) * 3);
+    left: var(--cell);
+    width: calc(var(--cell) * 12 + 1px);
+    height: calc(var(--cell) * 4 + 1px);
+    margin: 0;
+    font-size: 11pt;
+    line-height: 15pt;
+    padding: calc(var(--cell) * 0.5) var(--cell);
+  }
+
+  .contact-soustitre {
+    position: absolute;
+    top: calc(var(--cell) * 7);
+    left: var(--cell);
+    width: calc(var(--cell) * 12 + 1px);
+    height: calc(var(--cell) * 1);
+    margin: 0;
+    padding-left: var(--cell);
+    font-size: 8pt;
+  }
+
+  .contact-form {
+    position: absolute;
+    top: calc(var(--cell) * 9);
+    left: var(--cell);
+    right: auto;
+    width: calc(var(--cell) * 12 + 1px);
+    height: auto;
+    margin: 0;
+  }
+
+  .form-field.message {
+    height: calc(var(--cell) * 6);
+  }
+
+  /* FOOTER */
+  .footer-inner {
+    width: 100%;
+    height: calc(var(--cell) * 6);
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-top: var(--cell);
+    padding-left: 0;
+    gap: var(--cell);
+  }
+
+  .footer-inner .logo-block {
+    margin-left: var(--cell);
+  }
+
+  .footer-copyright {
+    margin-right: 0;
+    margin-left: var(--cell);
+    font-size: 10pt;
+    padding: 0 calc(var(--cell) * 0.5);
+  }
+}
+
+  .burger {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: var(--fond);
+    border: 1px solid var(--rose);
+    width: calc(var(--cell) * 2 + 1px);
+    height: calc(var(--cell) * 2 + 1px);
+    cursor: pointer;
+    padding: 0 10px;
+    margin-right: calc(var(--cell) - 1px);
+  }
+
+  .burger svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .overlay {
+    display: none;
+    position: fixed;
+    top: calc(var(--cell) * 4);
+    right: calc(var(--cell) - 2px);
+    z-index: 100;
+    flex-direction: column;
+    width: calc(var(--cell) * 5 + 1px);
+  }
+
+  .overlay.open {
+    display: flex;
+  }
+
+  .overlay-close { display: none; }
+
+  .overlay-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: calc(var(--cell) * 2);
+    background: var(--fond);
+    border: 1px solid var(--rose);
+    border-bottom: none;
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 600;
+    font-size: 14pt;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #bc1822;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .overlay-btn:last-child {
+    border-bottom: 1px solid var(--rose);
+  }
+
+  @media (max-width: 768px) {
+    .burger { display: flex; }
+    #navBlock { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="grid-layer">
+  <div class="header-inner">
+    <div class="logo-block">
+      <div class="logo-line"><span class="logo-a">A</span>TELIER</div>
+      <div class="logo-line"><span class="logo-d">D</span>ÉFENSE&nbsp;<span class="logo-n">N</span>ARRATIVE</div>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu">
+      <svg viewBox="0 0 40.8 18.2" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect fill="#ef7fa3" width="40.8" height="4.4"></rect>
+        <rect fill="#ef7fa3" y="6.9" width="40.8" height="4.4"></rect>
+        <rect fill="#ef7fa3" y="13.8" width="40.8" height="4.4"></rect>
+      </svg>
+    </button>
+    <div class="nav-block" id="navBlock">
+      <a class="nav-btn" href="file:///C:/Users/Sulta/Downloads/ADN_responsive_v8_15.html#">L'Atelier</a>
+      <a class="nav-btn" href="file:///C:/Users/Sulta/Downloads/ADN_responsive_v8_15.html#">Contact</a>
+    </div>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="phrase phrase-roboto" id="p0">On ne sait plus <strong>débattre</strong>.</div>
+  <div class="phrase phrase-roboto" id="p1">Les échanges deviennent <strong>polarisés</strong>,<br><strong>émotionnels</strong> et <strong>conflictuels</strong>.</div>
+  <div class="phrase phrase-roboto" id="p2">Il y a un moyen d'y <strong>remédier</strong>.</div>
+  <div class="phrase phrase-bartle visible" id="p3">
+    <span>ATELIER</span>
+    <span>DEFENSE</span>
+    <span>NARRATIVE</span>
+  </div>
+</div>
+
+<div class="section-outer">
+  <div class="concept-inner">
+    <div class="concept-label">Concept</div>
+    <div class="concept-text">
+      Apprendre à écouter, penser et répondre autrement.
+      Un espace d'entraînement collectif consacré au dialogue,
+      à l'esprit critique<br>et à la qualité de la relation.
+    </div>
+  </div>
+</div>
+
+
+<!-- SPACER -->
+<div style="width:100%;height:calc(var(--cell) * 1);background:#f5f0e6;"></div>
+
+<!-- L'ATELIER -->
+<div class="section-outer">
+  <div class="atelier-inner">
+    <div class="atelier-label">L'Atelier</div>
+    <div class="atelier-text">
+      <p class="atelier-title">COMPRENDRE AVANT<br>DE RÉPONDRE</p>
+      <p class="atelier-body">Face à une affirmation sensible, une accusation<br>ou un désaccord, notre premier réflexe consiste<br>souvent à nous défendre immédiatement.<br><br>L'atelier invite au contraire à ralentir. Écouter.<br>Questionner. Clarifier. Observer. Puis choisir<br>comment répondre.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SPACER -->
+<div style="width:100%;height:calc(var(--cell) * 1);background:#f5f0e6;"></div>
+
+<!-- CE QUE VOUS DEVELOPPEZ -->
+<div class="section-outer">
+  <div class="piliers-inner">
+    <div class="piliers-label">Ce que vous développez</div>
+    <div class="piliers-grid">
+      <div class="pilier" style="border-right: none;">
+        <div class="pilier-picto"><svg viewBox="0 0 28.3 29.7" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><polygon fill="#5ab8e9" points="21.2 1.4 7.1 1.4 0 15.6 7.1 29.7 21.2 29.7 28.3 15.6 21.2 1.4"></polygon></svg></div>
+        <div class="pilier-titre">ÉCOUTE</div>
+        <div class="pilier-texte">Comprendre ce que l'autre exprime, croit, ressent.</div>
+      </div>
+      <div class="pilier" style="border-right: none;">
+        <div class="pilier-picto"><svg viewBox="0 0 28.3 29.7" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><polygon fill="#bd1822" points="28.3 15.6 0 1.4 0 29.7 28.3 15.6"></polygon></svg></div>
+        <div class="pilier-titre">ESPRIT CRITIQUE</div>
+        <div class="pilier-texte">Distinguer faits, interprétations, postures rhétoriques.</div>
+      </div>
+      <div class="pilier" style="">
+        <div class="pilier-picto"><svg viewBox="0 0 28 28" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><circle fill="#ffcf47" cx="14" cy="14" r="13.8"></circle></svg></div>
+        <div class="pilier-titre">RECUL</div>
+        <div class="pilier-texte">Observer l'échange pendant qu'il se déroule.</div>
+      </div>
+      <div class="pilier" style="border-right: none;">
+        <div class="pilier-picto"><svg viewBox="0 0 24 24" width="24" height="24" xmlns="http://www.w3.org/2000/svg"><rect fill="#ef7fa3" x="0" y="0" width="23.9" height="23.9"></rect></svg></div>
+        <div class="pilier-titre">GESTION ÉMOTIONNELLE</div>
+        <div class="pilier-texte">Rester maître de sa parole sous pression.</div>
+      </div>
+      <div class="pilier" style="border-right: none;">
+        <div class="pilier-picto"><svg viewBox="0 0 28.3 29.7" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><polygon fill="#8cad5f" points="28.3 22.6 28.3 8.5 14.2 1.4 0 8.5 0 22.6 14.2 29.7 28.3 22.6"></polygon></svg></div>
+        <div class="pilier-titre">ARGUMENTATION</div>
+        <div class="pilier-texte">Construire une réponse claire, solide et précise.</div>
+      </div>
+      <div class="pilier" style="">
+        <div class="pilier-picto"><svg viewBox="0 0 32 32" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><rect fill="#65448c" x="5" y="5" width="22" height="22" transform="rotate(45 16 16)"></rect></svg></div>
+        <div class="pilier-titre">COOPÉRATION</div>
+        <div class="pilier-texte">Progresser ensemble par l'intelligence collective.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SPACER -->
+<div style="width:100%;height:calc(var(--cell) * 1);background:#f5f0e6;"></div>
+
+<!-- METHODE -->
+<div class="section-outer">
+  <div class="methode-inner">
+    <div class="methode-label">Méthode</div>
+    <div class="methode-text">
+      <p class="methode-title">UNE EXPÉRIENCE IMMERSIVE</p>
+      <p class="methode-body">Les participants sont placés dans des situations qui les<br>invitent à sortir de leurs automatismes, à ajuster leur posture<br>et à découvrir de nouvelles manières d'interagir.<br><br>L'expérience alterne des moments d'intensité, de coopération,<br>de recul et de feedback. Elle permet à chacun d'apprendre<br>sur lui-même, sur les autres et sur la manière dont se construisent<br>les désaccords.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SPACER -->
+<div style="width:100%;height:calc(var(--cell) * 1);background:#f5f0e6;"></div>
+
+<!-- CONTACT -->
+<div class="section-outer">
+  <div class="contact-inner">
+    <div class="contact-label">Contact</div>
+
+    <div class="contact-titre">
+      <span>PARTICIPER</span>
+      <span>OU ORGANISER</span>
+      <span>UN ATELIER</span>
+    </div>
+
+    <div class="contact-soustitre">
+      Laissez vos coordonnées, nous vous recontactons.
+    </div>
+
+    <div class="contact-form">
+      <div class="form-field">
+        <label>Nom</label>
+        <input type="text" placeholder="">
+      </div>
+      <div class="form-field">
+        <label>Email</label>
+        <input type="email" placeholder="">
+      </div>
+      <div class="form-field">
+        <label>Organisation / Contexte</label>
+        <input type="text" placeholder="">
+      </div>
+      <div class="form-field message">
+        <label>Message</label>
+        <textarea></textarea>
+      </div>
+      <div class="form-submit">
+        <span>Envoyer</span>
+        <span>→</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SPACER -->
+<div style="width:100%;height:calc(var(--cell) * 1);background:#f5f0e6;"></div>
+
+<!-- FOOTER -->
+<div class="footer-layer">
+  <div class="footer-inner">
+    <div class="logo-block" style="margin-left:var(--cell);">
+      <div class="logo-line"><span class="logo-a">A</span>TELIER</div>
+      <div class="logo-line"><span class="logo-d">D</span>ÉFENSE&nbsp;<span class="logo-n">N</span>ARRATIVE</div>
+    </div>
+    <div class="footer-copyright">© 2026 — Atelier Défense Narrative</div>
+  </div>
+</div>
+<!-- OVERLAY MENU -->
+<div class="overlay" id="overlay">
+  <a class="overlay-btn" href="file:///C:/Users/Sulta/Downloads/ADN_responsive_v8_15.html#">L'Atelier</a>
+  <a class="overlay-btn" href="file:///C:/Users/Sulta/Downloads/ADN_responsive_v8_15.html#">Contact</a>
+</div>
+
+<script>
+  const phrases = document.querySelectorAll('.phrase');
+  let current = 0;
+  const durations = [2500, 3000, 2500, 3500];
+
+  function showNext() {
+    phrases[current].classList.remove('visible');
+    current = (current + 1) % phrases.length;
+    setTimeout(() => {
+      phrases[current].classList.add('visible');
+      setTimeout(showNext, durations[current]);
+    }, 800);
+  }
+
+  phrases[current].classList.add('visible');
+  setTimeout(showNext, durations[current]);
+
+  const burger = document.getElementById('burger');
+  const overlay = document.getElementById('overlay');
+
+  burger.addEventListener('click', function(e) {
+    e.stopPropagation();
+    overlay.classList.toggle('open');
+  });
+
+  document.querySelectorAll('.overlay-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      overlay.classList.remove('open');
+    });
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!overlay.contains(e.target) && e.target !== burger) {
+      overlay.classList.remove('open');
+    }
+  });
+</script>
+
+
+
+</body></html>
