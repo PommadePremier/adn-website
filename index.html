@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Atelier Defense Narrative</title>
+  <title>ADN Atelier Defense Narrative</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=BBH+Bartle&family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,600&display=swap');
 
@@ -118,13 +118,13 @@
       width: 100%;
       text-align: center;
       padding: 0 48px;
-      opacity: 0;
-      transition: opacity 0.8s ease;
+      opacity: 0 !important;
       pointer-events: none;
     }
 
     .phrase.visible {
-      opacity: 1;
+      opacity: 1 !important;
+      transition: opacity 0.8s ease;
     }
 
     .phrase-roboto {
