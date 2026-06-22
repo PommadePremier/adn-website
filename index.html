@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0045)file:///C:/Users/Sulta/Downloads/index_5.html -->
+<!-- saved from url=(0045)file:///C:/Users/Sulta/Downloads/index_6.html -->
 <html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -927,9 +927,9 @@
 
 <div class="hero">
   <div class="phrase phrase-roboto" id="p0">On ne sait plus <strong>débattre</strong>.</div>
-  <div class="phrase phrase-roboto visible" id="p1">Les échanges deviennent <strong>polarisés</strong>,<br><strong>émotionnels</strong> et <strong>conflictuels</strong>.</div>
+  <div class="phrase phrase-roboto" id="p1">Les échanges deviennent <strong>polarisés</strong>,<br><strong>émotionnels</strong> et <strong>conflictuels</strong>.</div>
   <div class="phrase phrase-roboto" id="p2">Il y a un moyen d'y <strong>remédier</strong>.</div>
-  <div class="phrase phrase-bartle" id="p3">
+  <div class="phrase phrase-bartle visible" id="p3">
     <span>ATELIER</span>
     <span>DEFENSE</span>
     <span>NARRATIVE</span>
@@ -1101,9 +1101,9 @@
   }
 
   if (document.fonts) {
-    document.fonts.ready.then(startAnimation);
+    document.fonts.ready.then(() => setTimeout(startAnimation, 100));
   } else {
-    window.addEventListener('load', startAnimation);
+    window.addEventListener('load', () => setTimeout(startAnimation, 100));
   }
 
   const burger = document.getElementById('burger');
