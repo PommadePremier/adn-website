@@ -9,6 +9,10 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=BBH+Bartle&family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,600&display=swap');
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -965,8 +969,8 @@
         </svg>
       </button>
       <div class="nav-block" id="navBlock">
-        <a class="nav-btn" href="file:///C:/Users/Sulta/Downloads/ADN_responsive_v8_15.html#">L'Atelier</a>
-        <a class="nav-btn" href="file:///C:/Users/Sulta/Downloads/ADN_responsive_v8_15.html#">Contact</a>
+        <a class="nav-btn" href="#atelier">L'Atelier</a>
+        <a class="nav-btn" href="#contact">Contact</a>
       </div>
     </div>
   </div>
@@ -999,7 +1003,7 @@
   <div style="width:100%;height:calc(var(--cell) * 1);background:#f5f0e6;"></div>
 
   <!-- L'ATELIER -->
-  <div class="section-outer">
+  <div class="section-outer" id="atelier">
     <div class="atelier-inner">
       <div class="atelier-label">L'Atelier</div>
       <div class="atelier-text">
@@ -1089,7 +1093,7 @@
   <div style="width:100%;height:calc(var(--cell) * 1);background:#f5f0e6;"></div>
 
   <!-- CONTACT -->
-  <div class="section-outer">
+  <div class="section-outer" id="contact">
     <div class="contact-inner">
       <div class="contact-label">Contact</div>
 
@@ -1144,8 +1148,8 @@
   </div>
   <!-- OVERLAY MENU -->
   <div class="overlay" id="overlay">
-    <a class="overlay-btn" href="file:///C:/Users/Sulta/Downloads/index_3.html#">L'Atelier</a>
-    <a class="overlay-btn" href="file:///C:/Users/Sulta/Downloads/index_3.html#">Contact</a>
+    <a class="overlay-btn" href="#atelier">L'Atelier</a>
+    <a class="overlay-btn" href="#contact">Contact</a>
   </div>
 
   <script>
